@@ -105,3 +105,4 @@ dist
 .tern-port
 assets/.DS_Store
 .DS_Store
+.dotenv_test

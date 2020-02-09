@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js "
+    "test": "node -r dotenv/config index.js dotenv_config_path=.dotenv_test"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": { 
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
