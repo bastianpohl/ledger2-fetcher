@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node -r dotenv/config index.js dotenv_config_path=.dotenv_test"
+    "test": "node -r dotenv/config index.js dotenv_config_path=.dotenv_test",
+    "initial": "node -r dotenv/config index.js dotenv_config_path=.dotenv_i",
+    "run": "node -r dotenv/config index.js dotenv_config_path=.dotenv"
   },
   "author": "",
   "license": "ISC",
