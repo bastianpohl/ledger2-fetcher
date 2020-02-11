@@ -9,7 +9,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": { 
+  "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
@@ -20,6 +20,7 @@
     "iban": "0.0.12",
     "moment": "^2.24.0",
     "mysql2": "^2.1.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "systemd-journald": "^1.5.1"
   }
 }
