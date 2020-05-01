@@ -7,10 +7,11 @@ dotenv.config()
 // import local functions
 import { Fetcher } from "./lib/controller/fints_fetcher";
 
-// fetch transactions and store to sql db 
+// fetch transactions and store to sql db
 const fetch = async () => {
-  await Fetcher.fetchAndStore()
-  process.exit()
+   const fetcher = new Fetcher()
+   await fetcher.fetchAndStore()
+   process.exit()
 }
 
 // run
