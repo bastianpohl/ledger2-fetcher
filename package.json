@@ -1,27 +1,27 @@
 {
-  "name": "ledger2-backend",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "debug": "node --inspect-brk -r dotenv/config index.js dotenv_config_path=.env ",
-    "test": "node -r dotenv/config index.js dotenv_config_path=.dotenv_test",
-    "run": "node -r dotenv/config index.js dotenv_config_path=.env"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "cryptr": "^6.0.2",
-    "dotenv": "^8.2.0",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "fints": "^0.3.1",
-    "iban": "0.0.12",
-    "moment": "^2.25.0",
-    "mysql2": "^2.1.0",
-    "nodemon": "^2.0.3"
-  }
+   "name": "ledger2-backend",
+   "version": "0.0.1",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "debug": "node --inspect-brk 192.168.178.100:9229 -r dotenv/config index.js dotenv_config_path=.env ",
+      "test": "node -r dotenv/config index.js dotenv_config_path=.dotenv_test",
+      "run": "node -r dotenv/config index.js dotenv_config_path=.env"
+   },
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "body-parser": "^1.19.0",
+      "cookie-parser": "^1.4.5",
+      "cors": "^2.8.5",
+      "cryptr": "^6.0.2",
+      "dotenv": "^8.2.0",
+      "esm": "^3.2.25",
+      "express": "^4.17.1",
+      "fints": "^0.3.1",
+      "iban": "0.0.12",
+      "moment": "^2.25.0",
+      "mysql2": "^2.1.0",
+      "nodemon": "^2.0.3"
+   }
 }
