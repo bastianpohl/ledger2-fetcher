@@ -4,7 +4,7 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "debug": "node --inspect-brk 192.168.178.100:9229 -r dotenv/config index.js dotenv_config_path=.env ",
+      "debug": "node --inspect-brk=192.168.178.100:9229 -r dotenv/config index.js dotenv_config_path=.env ",
       "test": "node -r dotenv/config index.js dotenv_config_path=.dotenv_test",
       "run": "node -r dotenv/config index.js dotenv_config_path=.env"
    },
