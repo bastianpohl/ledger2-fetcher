@@ -1,19 +1,22 @@
-// @ts-nocheck
 import { getIBAN } from "../generic/bankConv";
 import moment from 'moment';
 import { BankCommunication } from "../model/bankingCom";
 import { Credentials } from "../model/credentials";
 import { Document } from "../model/document";
 import { Balance } from "../model/balance";
-import { Modify } from '../model/modify';
 
 
 const startDate = moment().subtract(1, "days").toDate()
 const endDate = moment().toDate()
 
-class Fetcher {
+export default class Fetcher {
+
+   private creds: string | any[]
+   private fints: BankCommunication | undefined
+   private accounts = []
+
    constructor() {
-      this.creds = undefined
+      this.creds = []
       this.fints = undefined
       this.accounts = []
    }
@@ -37,8 +40,7 @@ class Fetcher {
                // get alle transaction for the selectecd account within time interval
                const statements = await this.fints.getTransactions(this.fints.accounts[i], startDate, endDate);
                const balance = new Balance(statements[0].accountId, statements[0].openingBalance, statements[0].closingBalance)
-               console.log(statements[0].transactions)
-               console.log(balance)
+
 
                // search for balance entry with actual value in DB
                const check = await balance.getValue();
@@ -52,19 +54,18 @@ class Fetcher {
                if (result) {
                   // create a set of transactions
 
-                  
+
                   const docs = statements[0].transactions.map(async action => {
-                     const doc = new Document(action)
+                     var doc = new Document(action)
                      doc.setAccount(getIBAN(statements[0].accountId))
                      doc.setCategory(0)
-                     doc = new Modify(doc).item()
-                     
+
                      return doc
                   })
 
                   // insert new rows of docs
                   await Promise.all(docs.map(async doc => {
-                      await doc.create()
+                      await (await doc).create()
                   }))
                }
             }
@@ -75,7 +76,3 @@ class Fetcher {
     }
 
 }
-
-
-
-export { Fetcher }

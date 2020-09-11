@@ -106,3 +106,4 @@ dist
 assets/.DS_Store
 .DS_Store
 .dotenv_test
+.end_pi

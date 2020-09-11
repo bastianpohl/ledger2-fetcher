@@ -1,10 +1,14 @@
-import { PinTanClient } from "fints";
-import Cryptr from 'cryptr';
+import { PinTanClient, SEPAAccount } from "fints";
+import Cryptr  from "cryptr";
 
-const cryptr = new Cryptr(process.env.SECRET)
+const secret = process.env.SECRET || "a"
+const cryptr = new Cryptr(secret)
 
 class BankCommunication {
-   constructor(data) {
+   client: PinTanClient;
+   accounts: SEPAAccount[];
+
+   constructor(data: any) {
      this.client = new PinTanClient({
       url: data.url,
       name: cryptr.decrypt(data.login),
@@ -22,7 +26,7 @@ class BankCommunication {
       }
    }
 
-   getTransactions = async (account, date_from, date_to) => {
+   getTransactions = async (account: SEPAAccount, date_from: Date, date_to: Date) => {
      try {
         return await this.client.statements(account, date_from, date_to)
      } catch (error) {

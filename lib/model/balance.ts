@@ -1,10 +1,16 @@
-import { DatabaseManager } from "../model/db";
+import { DatabaseManager } from "./db";
 import { getIBAN } from "../generic/bankConv";
 
 const dbm = new DatabaseManager()
 
 class Balance {
-   constructor(account, openingBalance, closingBalance) {
+   iban: string;
+   date: any;
+   value: number;
+   openingBalance: any;
+   closingBalance: any;
+
+   constructor(account: any, openingBalance: any, closingBalance: any) {
       this.iban = getIBAN(account)
       this.date = closingBalance.date
       this.value = (closingBalance.isCredit) ? closingBalance.value : closingBalance.value * -1

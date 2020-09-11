@@ -1,4 +1,4 @@
-import sqldb from "mysql2/promise";
+import * as sqldb from "mysql2/promise"
 
 const conf = {
   host: process.env.DB_HOST,
@@ -11,6 +11,7 @@ const conf = {
 }
 
 class DatabaseManager {
+  conn: any;
   constructor() {
     this.conn = null
   }
@@ -24,7 +25,7 @@ class DatabaseManager {
 
   }
 
-  query = async (sql, values) => {
+  query = async (sql: any, values: any) => {
     try {
       if (this.conn === null) {
         await this.initDB()

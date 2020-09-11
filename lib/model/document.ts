@@ -3,6 +3,17 @@ import { DatabaseManager } from "./db";
 const dbm = new DatabaseManager()
 
 class Document {
+   id: any;
+   bank_id: any;
+   name: any;
+   type: any;
+   valueDate: any;
+   entryDate: any;
+   iban: any;
+   amount: any;
+   description: any;
+   category: number;
+   account: number;
 
    constructor(data) {
       this.id = (!data.bank_id) ? undefined : data.id
@@ -37,7 +48,7 @@ class Document {
           hash = MD5('${docAsString}')
         LIMIT 1
       `
-      return await dbm.query(sql)
+      return await dbm.query(sql, undefined)
    }
 
    create = async () => {
@@ -66,12 +77,11 @@ class Document {
               '${this.iban}',
               '${this.amount}',
               '${this.description}',
-              '(SELECT IF(${this.category} <> 0, (SELECT id FROM categories where title = '${this.category}' AND account = '${this.account}'
-                ),0))',
+              '${this.category}',
               (SELECT id FROM accounts WHERE iban = '${this.account}')
             )
          `
-      return await dbm.query(sql)
+      return await dbm.query(sql, undefined)
    }
 }
 
